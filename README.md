@@ -24,6 +24,8 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
 * VIPONLY
 
+  **Note**: *This script cannot teleport you to VIP servers. This setting is only for usage with the AutoRestart program. It simply detects whether you have loaded into a VIP server or not and then pauses further script execution based on whether you have enabled it or not.*
+
   `true` : *Will pause any further execution of script detects you are in a public server. Will prevent the script from continuing.*
 
   `false` : *Will not suspend the script if it detects you're in a public server when loaded.*
