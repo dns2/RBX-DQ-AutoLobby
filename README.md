@@ -8,9 +8,11 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
 ## Usage
 
-   To use this script you must **download it** and then **edit the settings** in the config section at the top of the file. What each setting means and how to use it is explained below in Settings secton. After configuring the file, **place it in the auto execute folder of your exploit program** (*like Synapse X*), **along with Blake's Autofarm file**. They should be individual/separate files, and the names of the files should not be altered or they will not be executed in the correct order. The Autolobby script **must run before the Autofarm script**, because lobby creation/joining comes first in the game.
+   To use this script you must **download `AutolobbyDQ.lua`** and then **edit the settings** in the config section at the top of the file. What each setting means and how to use it is explained below in Settings secton. After configuring the file, **place it in the auto execute folder of your exploit program** (*like Synapse X*), **along with Blake's Autofarm file**. They should be individual/separate files, and the names of the files should not be altered or they will not be executed in the correct order. The Autolobby script **must run before the Autofarm script**, because lobby creation/joining comes first in the game.
 
    The settings in the Autolobby script do not affect the settings of the Autofarm script nor do they change how it performs. The Autofarm script will detect where it is once a dungeon or boss raid dungeon has loaded, and will do what it is supposed to do from there. *This script only handles lobby creation, whitelisting, and joining.*
+
+   `AutolobbyDQ-AFCheck.lua` can also be added to your auto execute folder to prevent the Autofarm file from being ran after the Autolobby. This file *should* run in-line between the Autolobby and Autofarm files. The purpose for this would be if you were using the same PC, running two Roblox instances, in order to host on one account and join it on the other. *I have not fully tested this process but will have definite concept testing of this theory soon and update this file accordingly.*
 
 ## Settings
 
