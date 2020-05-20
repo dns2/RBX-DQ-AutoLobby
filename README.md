@@ -14,6 +14,8 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
 ## Settings
 
+Important: **Usernames**, **Map name**, & **Difficulty** are all **case-sensitive**. *Example: "player1" is not the same as "Player1")
+
 ### Script
 
 * Enabled
