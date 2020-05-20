@@ -11,6 +11,7 @@ Dungeon Quest Autolobby->Autofarm Run Check
 local useridnum = 000000000
 --/ Do not edit below this line /--
 
+while not game.Players.LocalPlayer do wait() end
 if game.Players.LocalPlayer.UserId == useridnum then
 	print("AFCheck preventing any further script executions..")
 	while game.Players.LocalPlayer.UserId == useridnum do
