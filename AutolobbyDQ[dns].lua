@@ -18,7 +18,7 @@ Settings = {
 --> [ Hosting ]
 	LobbyHost = "HostName",				-- Username of player that will be creating/hosting the game lobby. Will also accept "" to be host
 	WLParty  = {"Player1"},				-- Username(s) to whitelist. Example: {"Player1","Player2","Player3"} | Will also accept {} for solo
-	LobbyType = "BossRaid",				-- "Dungeon" or "BossRaid"
+	LobbyType = "Dungeon",				-- "Dungeon" or "BossRaid"
 --> [ Dungeon ]
 	MapName = "Orbital Outpost",
 	Difficulty = "Nightmare",
