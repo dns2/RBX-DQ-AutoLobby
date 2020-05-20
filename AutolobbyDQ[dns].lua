@@ -6,8 +6,9 @@
 		TO USE: Configure the settings below and place in autoexec folder along with Blake's Autofarm (separately).
 		SUPPORT: If you need help with using/configuring this, then message me (dns#3420) on discord, or use link below.
 		* Full Configuration and Usage info is available at https://github.com/dns2/RBX-DQ-AutoLobby/blob/master/README.md
-		NOTES: +This will not teleport you to VIP servers. The VIPONLY option is only for usage with the 'AutoRestart' program.
-		+Usernames, Map name, & Difficulty are all case-sensitive. *Example: "player1" is not the same as "Player1")		]]
+		NOTES:
+			This will not teleport you to VIP servers. The VIPONLY option is only for usage with the 'AutoRestart' program.
+			Usernames, Map name, & Difficulty are all case-sensitive. *Example: "player1" is not the same as "Player1")		]]
 
 -- [ CONFIG ]
 Settings = {
@@ -16,7 +17,7 @@ Settings = {
 	VIPONLY = false,					-- true = Suspend everything unless on a VIP Server
 --> [ Hosting ]
 	LobbyHost = "HostName",				-- Username of player that will be creating/hosting the game lobby. Will also accept "" to be host
-	WLParty  = {"Player1","Player2"},	-- Username(s) to whitelist. Example: {"Player1","Player2","Player3"} | Will also accept {} for solo
+	WLParty  = {"Player1"},				-- Username(s) to whitelist. Example: {"Player1","Player2","Player3"} | Will also accept {} for solo
 	LobbyType = "BossRaid",				-- "Dungeon" or "BossRaid"
 --> [ Dungeon ]
 	MapName = "Orbital Outpost",
