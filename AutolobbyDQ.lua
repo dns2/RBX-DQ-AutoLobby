@@ -31,7 +31,11 @@ Settings = {
 	Private = true,						-- Keep this true. Reserved for future update
 	DisableMusic = true,				-- true = Music disabled | false = Music enabled
 	DisableTrade = true,				-- true = Trading disabled | false = Trading enabled
-	DebugOutput = true					-- Enable or Disable script output to Roblox Developer Console
+	DebugOutput = true,					-- Enable or Disable script output to Roblox Developer Console
+	UseLoadFileMethod = false,			-- If AutoExec method is loading files wrong use this instead
+	NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5A.lua",	-- EXACT name of the autofarm lua file. Put the file in exploit's 'workspace' folder!
+	UseAutofarmWhenHosting = true,
+	UseAutofarmWhenJoining = false
 } -- [ END CONFIG ] --> (Do not edit below this line)
 
 DQAL = {}
@@ -52,7 +56,7 @@ end
 
 function DQAL.Die(p, ...)
 	if p then DQAL.Prnt(...) end
-	while script do script:Destroy() end
+	if script then script:Destroy() end
 end
 
 function DQAL.PreRun()
@@ -106,6 +110,8 @@ function DQAL.JoinLobby()
 
 	DQAL.Prnt("Lobby joined. Waiting for "..Settings.LobbyHost.." to start game..")
 	while game.PlaceId == 2414851778 do	wait(.5) end
+	wait(2.5)
+	if Settings.UseLoadFileMethod and Settings.UseAutofarmWhenJoining then local AutoFarm = loadfile(Settings.NameOfAutofarmFile)() end
 end
 
 function DQAL.Whitelist()
@@ -145,6 +151,8 @@ function DQAL.StartDungeon()
 	end
 	DQAL.Prnt("Waiting to teleport out..")
 	while game.PlaceId == 2414851778 do	wait(.5) end
+	wait(2.5)
+	if Settings.UseLoadFileMethod and Settings.UseAutofarmWhenHosting then local AutoFarm = loadfile(Settings.NameOfAutofarmFile)() end
 end
 
 if Settings.Enabled then
