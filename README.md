@@ -146,8 +146,8 @@ ___
 
 * Method
 
-   `"autoexec"` or `"loadfile"` : Tells the script whether to let the autofarm run from autoexec or load it from the exploit workspace folder once entering a dungeon.*
+   `"autoexec"` or `"loadfile"` : Tells the script whether to let the autofarm run from autoexec or load it from the exploit workspace folder once entering a dungeon.
 
 * NameOfAutofarmFile
 
-   `"AutofarmFileName.lua"` : The exact filename you have for Blake's Autofarm file. The file must be located in your exploit workspace folder*
+   `"AutofarmFileName.lua"` : The **exact** filename you have for Blake's Autofarm file. *The file must be located in your exploit workspace folder*.
