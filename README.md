@@ -8,7 +8,13 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
 ## Usage
 
-   To use this script you must **download `AutolobbyDQ.lua`** and then **edit the settings** in the config section at the top of the file. What each setting means and how to use it is explained below in Settings secton. After configuring the file, **place it in the auto execute folder of your exploit program** (*like Synapse X*), **along with Blake's Autofarm file**. They should be individual/separate files, and the names of the files should not be altered or they will not be executed in the correct order. The Autolobby script **must run before the Autofarm script**, because lobby creation/joining comes first in the game.
+   To use this script you must **download `AutolobbyDQ.lua`** and then **edit the settings** in the config section at the top of the file. What each setting means and how to use it is explained below in Settings secton.
+
+   There's two ways you can configure the script to work with the Autofarm script. I have now added a second method if you have issues with autoexec or the game freezing during teleports..
+
+   **Autoexec method**: After configuring the file, you w**place it in the auto execute folder of your exploit program** (*like Synapse X*), **along with Blake's Autofarm file**. They should be individual/separate files, and the names of the files should not be altered or they will not be executed in the correct order. The Autolobby script **must run before the Autofarm script**, because lobby creation/joining comes first in the game.
+
+   **Loadfile Method**: After configuring the file, you w**place it in the auto execute folder of your exploit program** (*like Synapse X*), **and place Blake's Autofarm file in the exploit 'workspace' folder**. They should be individual/separate files. You can name the autofarm whatever you wish, just be sure to update the exact name of it in the Misc area of the autolobby file's settings.
 
    The settings in the Autolobby script do not affect the settings of the Autofarm script nor do they change how it performs. The Autofarm script will detect where it is once a dungeon or boss raid dungeon has loaded, and will do what it is supposed to do from there. *This script only handles lobby creation, whitelisting, and joining.*
 
@@ -137,3 +143,11 @@ ___
 * DebugOutput
 
    `true` or `false` : Enables or Disables the script output to Roblox Developer Console. *On PC you can quickly open the console using the F9 button.*
+
+* Method
+
+   `"autoexec"` or `"loadfile"` : Tells the script whether to let the autofarm run from autoexec or load it from the exploit workspace folder once entering a dungeon.*
+
+* NameOfAutofarmFile
+
+   `"AutofarmFileName.lua"` : The exact filename you have for Blake's Autofarm file. The file must be located in your exploit workspace folder*
