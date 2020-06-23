@@ -1,17 +1,15 @@
 -----------------------------------------------------------------------------
--- [[ Dungeon Quest AutoLobby Addon v1.2 - by dns (dns#3420 on discord) ]] --
+-- [[ Dungeon Quest AutoLobby Addon v1.3 - by dns (dns#3420 on discord) ]] --
 --               https://github.com/dns2/RBX-DQ-AutoLobby                  --
 -----------------------------------------------------------------------------
---[[ 	FOR: Adds Carrying (Auto-hosting or Auto-joining) functionality to Blake's Autofarm.
+--[[ 	FOR: Adds Carrying (Auto-hosting and/or Auto-joining) functionality to Blake's Autofarm.
 		TO USE:
-			autoexec method: Configure the settings below, and place autolobby and autofarm files in exploit's autoexec folder (separately).
-			loadfile method: Configure the settings below, put autolobby file in exploit's autoexec folder and autofarm file in exploit's 'workspace' folder.
+			Configure the settings below, put autolobby file in exploit's autoexec folder, put autofarm file in exploit's 'workspace' folder.
 		SUPPORT: If you need help with using/configuring this, then message me (dns#3420) on discord, or use link below.
-		* Full Configuration and Usage info is available at https://github.com/dns2/RBX-DQ-AutoLobby/blob/master/README.md
+			* Full Configuration and Usage info is available at https://github.com/dns2/RBX-DQ-AutoLobby/blob/master/README.md
 		NOTES:
 			This will not teleport you to VIP servers. The VIPONLY option is only for usage with the 'AutoRestart' program.
-			Usernames, Map name, & Difficulty are all case-sensitive. *Example: "player1" is not the same as "Player1")
-			MAKE SURE YOU CHOOSE A METHOD IN THE MISC SECTION OF SETTINGS!	]]
+			Usernames, Map name, & Difficulty are all case-sensitive. *Example: "player1" is not the same as "Player1")		]]
 
 -- [ CONFIG ]
 Settings = {
@@ -35,8 +33,8 @@ Settings = {
 		DisableMusic = true,				-- true = Music disabled | false = Music enabled
 		DisableTrade = true,				-- true = Trading disabled | false = Trading enabled
 		DebugOutput = true,					-- Enable or Disable script output to Roblox Developer Console
-		Method = "loadfile",				-- Use either "autoexec" or "loadfile"
-		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5A.lua"	-- EXACT name of the autofarm lua file. (Only matters with loadfile method)
+		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5.1.lua",	-- EXACT name of the autofarm lua file. (Only matters with loadfile method)
+		RunAfOnlyAsHost = true				-- true = Will only run Autofarm when you're the host | false = Will always run Autofarm when Dungeon loads
 	} -- [ END CONFIG ] --> (Do not edit below this line)
 
 	DQAL = {}
@@ -70,13 +68,9 @@ Settings = {
 		local place = game.PlaceId
 		if place ~= 2414851778 then
 			if not DQAL.CheckPlaceID(place) then
-				DQAL.Die(true, "Not a Dungeon Quest Lobby/Dungeon. Exiting..")
+				DQAL.Die(true, "Not a known Dungeon Quest Lobby/Dungeon. Exiting..")
 			elseif DQAL.CheckPlaceID(place) then
-				if Settings.Method == "loadfile" then
-					return 2 -- Load the Autofarm file
-				elseif Settings.Method == "autoexec" then
-					return 3 -- Kill Autolobby and let Autofarm run from autoexec
-				end
+				return 2 -- Determine whether to load Autofarm
 			end
 		end
 		DQAL.Prnt("Game is loaded. Waiting for character..")
@@ -98,10 +92,10 @@ Settings = {
 		DQAL.Prnt("Creating a "..Settings.LobbyType.." Lobby..")
 		if Settings.LobbyType == "Dungeon" then
 			SRemote("createLobby", Settings.MapName, Settings.Difficulty, 0, Settings.Hardcore, Settings.Private, Settings.WaveDefense)
-			LobbyFolder = game.Workspace.games.inLobby:WaitForChild(MyName, 30)
+			LobbyFolder = game.Workspace.games.inLobby:WaitForChild(MyName, 60)
 		elseif Settings.LobbyType == "BossRaid" then
 			SRemote("createBossLobby", Settings.BRTier, Settings.Private, Settings.BRTierReq)
-			LobbyFolder = game.Workspace.bossLobbies:WaitForChild(MyName, 30)
+			LobbyFolder = game.Workspace.bossLobbies:WaitForChild(MyName, 60)
 		end
 		DQAL.Prnt(Settings.LobbyType.." Lobby created.")
 	end
@@ -114,19 +108,31 @@ Settings = {
 			LobbyFolder = game.Workspace.bossLobbies:WaitForChild(Settings.LobbyHost, 1200)
 		end
 		DQAL.Prnt(Settings.LobbyHost.."'s "..Settings.LobbyType.." Lobby found.")
-		DQAL.Prnt("Joining "..Settings.LobbyHost.."'s Lobby..")
-
-		if Settings.LobbyType == "Dungeon" then
-			SRemote("joinDungeon", Settings.LobbyHost)
-			game.Workspace.games.inLobby[Settings.LobbyHost]:WaitForChild(MyName, 30)
-		elseif Settings.LobbyType == "BossRaid" then
-			local raidHost = game.Workspace.bossLobbies[Settings.LobbyHost]
-			SRemote("playerJoinBossLobby", raidHost)
-			game.Workspace.bossLobbies[Settings.LobbyHost]:WaitForChild(MyName, 30)
-		end
-
+		wait()
+			function sendJoin()
+				DQAL.Prnt("Joining "..Settings.LobbyHost.."'s Lobby..")
+				if Settings.LobbyType == "Dungeon" then
+					SRemote("joinDungeon", Settings.LobbyHost)
+					game.Workspace.games.inLobby[Settings.LobbyHost]:WaitForChild(MyName, 10)
+				elseif Settings.LobbyType == "BossRaid" then
+					local raidHost = game.Workspace.bossLobbies[Settings.LobbyHost]
+					SRemote("playerJoinBossLobby", raidHost)
+					game.Workspace.bossLobbies[Settings.LobbyHost]:WaitForChild(MyName, 10)
+				end
+			end
+			function confirmJoin()
+				if Settings.LobbyType == "Dungeon" then
+					if not game.Workspace.games.inLobby[Settings.LobbyHost]:FindFirstChild(MyName) then sendJoin() end
+				elseif Settings.LobbyType == "BossRaid" then
+					if not game.Workspace.bossLobbies[Settings.LobbyHost]:FindFirstChild(MyName) then sendJoin() end
+				end
+			end
+		sendJoin()
 		DQAL.Prnt("Lobby joined. Waiting for "..Settings.LobbyHost.." to start game..")
-		while game.PlaceId == 2414851778 do	wait(.5) end
+		while game.PlaceId == 2414851778 do
+			wait(5)
+			confirmJoin()
+		end
 	end
 
 	function DQAL.Whitelist()
@@ -196,13 +202,23 @@ Settings = {
 				DQAL.CreateLobby()
 				DQAL.Whitelist()
 				DQAL.StartDungeon()
-			else
+			elseif Settings.LobbyHost ~= MyName then
 				DQAL.JoinLobby()
 			end
 		elseif task == 2 then
-			do loadfile(Settings.NameOfAutofarmFile)() end
-		elseif task == 3 then
-			DQAL.Die(true, "Quitting to allow Autofarm run from autoexec..")
+			MyName = game.Players.LocalPlayer.Name
+			if Settings.LobbyHost == MyName then
+				DQAL.Prnt("Joined Dungeon as Host! Loading '"..Settings.NameOfAutofarmFile.."'..")
+				do loadfile(Settings.NameOfAutofarmFile)() end
+			elseif Settings.LobbyHost ~= MyName then
+				if not Settings.RunAfOnlyAsHost then
+					DQAL.Prnt("Joined Dungeon as Alt/Carry! Loading '"..Settings.NameOfAutofarmFile.."'..")
+					do loadfile(Settings.NameOfAutofarmFile)() end
+				elseif Settings.RunAfOnlyAsHost then
+					DQAL.Prnt("Joined Dungeon as Alt/Carry!")
+					return
+				end
+			end
 		end
 	end
 

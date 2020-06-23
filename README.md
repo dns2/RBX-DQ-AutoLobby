@@ -4,21 +4,19 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
 ## Introduction
 
-   This script was designed to give you the additional capability of **Auto-hosting** a game lobby, or **Auto-joining** another player's game lobby. It was made to work with Blake's Autofarm on the game Dungeon Quest. It is useful for hosting/joining friends and alt accounts.
+   This script was designed to give you the additional capability of **Auto-hosting** a game lobby, or **Auto-joining** another player's game lobby. It was made to work with Blake's Autofarm on the game Dungeon Quest. It is useful for auto-hosting/joining friends and alt accounts.
 
 ## Usage
 
    To use this script you must **download `AutolobbyDQ.lua`** and then **edit the settings** in the config section at the top of the file. What each setting means and how to use it is explained below in Settings section.
 
-   There's two ways you can configure the script to work with the Autofarm script. I have now added a second method if you have issues with autoexec or the game freezing during teleports..
+   ~~There's two ways you can configure the script to work with the Autofarm script.~~ Autoexec method has been removed due to unreliability.
 
-   **Autoexec method**: After configuring the file, you **place it in the auto execute folder of your exploit program** (*like Synapse X*), **along with Blake's Autofarm file**. They should be individual/separate files, and the names of the files should not be altered or they will not be executed in the correct order. The Autolobby script **must run before the Autofarm script**, because lobby creation/joining comes first in the game.
-
-   **Loadfile Method**: After configuring the file, you **place it in the auto execute folder of your exploit program** (*like Synapse X*), **and place Blake's Autofarm file in the exploit 'workspace' folder**. They should be individual/separate files. You can name the autofarm whatever you wish, just be sure to update the exact name of it in the Misc area of the autolobby file's settings.
+   **Loadfile Method**: After configuring the file, you **place it in the autoexec folder of your exploit program** (*like Synapse X*), **and place Blake's Autofarm file in the exploit 'workspace' folder**. They should be individual/separate files. You can name the autofarm whatever you wish, just be sure to update the exact name of it in the Misc area of the autolobby file's settings.
 
    The settings in the Autolobby script do not affect the settings of the Autofarm script nor do they change how it performs. The Autofarm script will detect where it is once a dungeon or boss raid dungeon has loaded, and will do what it is supposed to do from there. *This script only handles lobby creation, whitelisting, and joining.*
 
-   `AutolobbyDQ-AFCheck.lua` can also be added to your auto execute folder to prevent the Autofarm file from being ran after the Autolobby. This file *should* run in-line between the Autolobby and Autofarm files. The purpose for this would be if you were using the same PC, running two Roblox instances, in order to host on one account and join it on the other. *I have not fully tested this process but will have definite concept testing of this theory soon and update this file accordingly.*
+   The Autolobby script is now also capable of handling multiple accounts at once on the same PC, using the Multiple_Roblox exploit. Using this tactic, you can host and carry the accounts of your choosing simultaneously. This means on one PC you can have a host auto-creating lobbies as well as one or more alt/carry accounts auto-joining it. I will be writing a separate info file to explain how to do this, and will add the link to it in this file shortly.
 
 ## Settings
 
@@ -46,7 +44,7 @@ ___
 
 * LobbyHost
 
-   The username of the player that will be creating and hosting the game lobby. If you will be the one hosting, then you can either put your own username or simply leave it empty (such as `""`).
+   The username of the player that will be creating and hosting the game lobby. If you will be the one hosting, then you can either put your own username or simply leave it empty (such as `""`). *If you will be using the Multiple_Roblox method then the exact username is required.*
 
   **Examples**:
 
@@ -151,3 +149,10 @@ ___
 * NameOfAutofarmFile
 
    `"AutofarmFileName.lua"` : The **exact** filename you have for Blake's Autofarm file. *The file must be located in your exploit workspace folder*.
+
+* RunAfOnlyAsHost
+
+   `true` Autofarm file will only be run after the dungeon is loaded if it's the account hosting the game lobby
+
+   `false` Autofarm file will always be allowed to run after a dungeon is loaded, even if you are just auto-joining another account
+
