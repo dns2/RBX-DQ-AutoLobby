@@ -142,10 +142,6 @@ ___
 
    `true` or `false` : Enables or Disables the script output to Roblox Developer Console. *On PC you can quickly open the console using the F9 button.*
 
-* Method
-
-   `"autoexec"` or `"loadfile"` : Tells the script whether to let the autofarm run from autoexec or load it from the exploit workspace folder once entering a dungeon.
-
 * NameOfAutofarmFile
 
    `"AutofarmFileName.lua"` : The **exact** filename you have for Blake's Autofarm file. *The file must be located in your exploit workspace folder*.
