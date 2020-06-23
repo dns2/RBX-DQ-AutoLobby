@@ -16,7 +16,7 @@ Auto-Lobby Script for the game "Dungeon Quest" on Roblox
 
    The settings in the Autolobby script do not affect the settings of the Autofarm script nor do they change how it performs. The Autofarm script will detect where it is once a dungeon or boss raid dungeon has loaded, and will do what it is supposed to do from there. *This script only handles lobby creation, whitelisting, and joining.*
 
-   The Autolobby script is now also capable of handling multiple accounts at once on the same PC, using the Multiple_Roblox exploit. Using this tactic, you can host and carry the accounts of your choosing simultaneously. This means on one PC you can have a host auto-creating lobbies as well as one or more alt/carry accounts auto-joining it. I will be writing a separate info file to explain how to do this, and will add the link to it in this file shortly.
+   The Autolobby script is now also capable of handling multiple accounts at once on the same PC, using the Multiple_Roblox exploit. Using this tactic, you can host and carry the accounts of your choosing simultaneously. This means on one PC you can have a host auto-creating lobbies as well as one or more alt/carry accounts auto-joining it. For more info read [Multiple_Roblox-Usage.md](https://github.com/dns2/RBX-DQ-AutoLobby/blob/master/Multiple_Roblox-Usage.md)
 
 ## Settings
 
