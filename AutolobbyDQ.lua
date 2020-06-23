@@ -33,7 +33,7 @@ Settings = {
 		DisableMusic = true,				-- true = Music disabled | false = Music enabled
 		DisableTrade = true,				-- true = Trading disabled | false = Trading enabled
 		DebugOutput = true,					-- Enable or Disable script output to Roblox Developer Console
-		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5.1.lua",	-- EXACT name of the autofarm lua file. (Only matters with loadfile method)
+		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5.1.lua",	-- EXACT name of the autofarm lua file
 		RunAfOnlyAsHost = true				-- true = Will only run Autofarm when you're the host | false = Will always run Autofarm when Dungeon loads
 	} -- [ END CONFIG ] --> (Do not edit below this line)
 
