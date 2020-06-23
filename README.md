@@ -148,7 +148,7 @@ ___
 
 * RunAfOnlyAsHost
 
-   `true` Autofarm file will only be run after the dungeon is loaded if it's the account hosting the game lobby
+   `true` Autofarm file will only be run after the dungeon is loaded **if it's the account hosting the game lobby**
 
-   `false` Autofarm file will always be allowed to run after a dungeon is loaded, even if you are just auto-joining another account
+   `false` Autofarm file **will always be allowed to run after a dungeon is loaded**, even if you are just auto-joining another account
 
