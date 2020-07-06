@@ -21,7 +21,7 @@ Settings = {
 		WLParty  = {"Player1"},				-- Username(s) to whitelist. Example: {"Player1","Player2","Player3"} | Will also accept {} for solo
 		LobbyType = "Dungeon",				-- "Dungeon" or "BossRaid"
 	--> [ Dungeon ]
-		MapName = "Orbital Outpost",
+		MapName = "Volcanic Chambers",
 		Difficulty = "Nightmare",
 		Hardcore = true,
 		WaveDefense = false,				-- Keep this false. (Wave defence doesn't currently work on Blake's Autofarm)
@@ -33,7 +33,7 @@ Settings = {
 		DisableMusic = true,				-- true = Music disabled | false = Music enabled
 		DisableTrade = true,				-- true = Trading disabled | false = Trading enabled
 		DebugOutput = true,					-- Enable or Disable script output to Roblox Developer Console
-		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5.1.lua",	-- EXACT name of the autofarm lua file
+		NameOfAutofarmFile = "Blakes_P_DQ_Autofarm_V5.2C.lua",	-- EXACT name of the autofarm lua file
 		RunAfOnlyAsHost = true				-- true = Will only run Autofarm when you're the host | false = Will always run Autofarm when Dungeon loads
 	} -- [ END CONFIG ] --> (Do not edit below this line)
 
@@ -182,11 +182,12 @@ Settings = {
 			3041739550, -- King's Castle
 			3119903031, -- The Underworld
 			3277965370, -- Samurai Palace
-			3488584454,	-- The Canals
+			3488584454, -- The Canals
 			3737465474, -- Ghastly Harbor
 			4113459044, -- Steampunk Sewers
 			4628698373, -- Orbital Outpost
 			4865331948, -- Egg Island
+			5281215714, -- Volcanic Chambers
 		}
 		if table.find(Dungeons, _id) then
 			return true
